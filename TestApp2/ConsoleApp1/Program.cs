@@ -142,6 +142,84 @@ namespace andestech.learning2022.krasn
             WriteLog("Info", (LogSeverety)1);
         }
 
+        static void LoopTest()
+        {
+
+            for (int k = 0; k < 4; k++)
+            {
+                Write($"{k}, ");
+            }
+            Write("\b\b.\n");
+
+            WriteLine("-------------------");
+            {
+                int k = 0;
+                for (; ; )
+                {
+                    if (!(k < 4)) break;
+                    Write($"{k}, ");
+                    k++;
+                }
+                Write("\b\b.\n");
+            }
+
+            WriteLine("-------------------");
+            {
+                int k = 0;
+                while (k < 4)
+                {
+                    Write($"{k}, ");
+                    k++;
+                }
+                Write("\b\b.\n");
+
+            }
+
+            WriteLine("-------------------");
+            {
+                int k = 0;
+                do
+                {
+                    Write($"{k}, ");
+                    k++;
+                }
+                while (k < 4);
+
+                Write("\b\b.\n");
+
+            }
+
+            //------------------------
+
+            WriteLine("Multy table");
+
+
+        }
+
+        static void Multic(int N = 10, int M = 10) {
+
+            for (int j = 1; j <= N; j++) 
+            { 
+                Write($"\t{j}");
+            } 
+            WriteLine();
+            for (int k = 1; k <= M; k++)
+            {
+                Write($"{k}");
+                for (int j = 1; j <= N; j++)
+                {
+                    Write($"\t{j * k}");
+                }
+                WriteLine();
+            }
+           }
+
+
+        //   1    2   3   4
+        //1  1    2   3
+        //2  2    4   6  
+        //3
+
         static void Main(string[] args)
         {
             
@@ -151,9 +229,10 @@ namespace andestech.learning2022.krasn
             //TestInput();
             //Calculator();
             //NumberTest();
-            LoggerTest();
-
-
+            //LoggerTest();
+            LoopTest();
+            WriteLine("======= MULTIC ========");
+            Multic(12,12);
 
             Write("press any key..");
             ReadKey();
