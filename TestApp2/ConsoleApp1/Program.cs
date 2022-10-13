@@ -7,6 +7,15 @@ using static System.Console;
 //WriteLine("Pass");
 namespace andestech.learning2022.krasn
 {
+
+    enum LogSeverety { 
+    Info,
+    Warning,
+    Error,
+    Metadata,
+    Debug
+    }
+
    // WriteLine("Pass");
     internal class Program
     {
@@ -66,6 +75,76 @@ namespace andestech.learning2022.krasn
 
         }
 
+
+        static void NumberTest() {
+            WriteLine($"byte\t MAX: {byte.MaxValue}");
+            WriteLine(String.Format("short\t MAX: {0}",short.MaxValue));
+            WriteLine($"int\t MAX: {int.MaxValue}");
+            WriteLine($"long\t MAX: {long.MaxValue}");
+            // number bit ops
+
+            byte a = 3;
+            WriteLine(a << 1);
+            WriteLine(a << 2);
+            WriteLine(a << 3);
+            WriteLine("-----------------------");
+
+            byte b = 155;
+            WriteLine(b >> 1);
+            WriteLine(b >> 2);
+            WriteLine(b >> 3);
+
+            WriteLine("-----------------------");
+
+            int MAX = unchecked((1 << 31) - 1);
+            WriteLine($"int\t MAX: {MAX}");
+
+
+        }
+
+        static void WriteLog(string message, LogSeverety LSeverity)
+        {
+            switch (LSeverity)
+            {
+                case LogSeverety.Info:
+                    WriteLine($"Log Info {message}");
+                    //.....
+                    break;
+                case LogSeverety.Error:
+                    WriteLine($"Log Error! {message}");
+                    //.....
+                    break;
+                case LogSeverety.Warning:
+                    WriteLine($"Log Warning {message}");
+                    //.....
+                    break;
+                case LogSeverety.Debug:
+                    WriteLine($"Log Debug {message}");
+                    //.....
+                    break;
+                default:
+                    WriteLine("SOME OPERATIONS...");
+                    break;
+
+
+
+
+
+
+
+            }
+        
+        
+        }
+
+        static void LoggerTest() {
+
+            WriteLog("start prog", LogSeverety.Info);
+            WriteLog("Error", LogSeverety.Error);
+
+
+        }
+
         static void Main(string[] args)
         {
             
@@ -73,7 +152,11 @@ namespace andestech.learning2022.krasn
             Write("Pass\tPass\tPass\t\n");
 
             //TestInput();
-            Calculator();
+            //Calculator();
+            //NumberTest();
+            LoggerTest();
+
+
 
             Write("press any key..");
             ReadKey();
