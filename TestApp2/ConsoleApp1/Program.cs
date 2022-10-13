@@ -210,7 +210,7 @@ namespace andestech.learning2022.krasn
                 {
                     Write($"\t{j * k}");
                 }
-                WriteLine();
+            WriteLine();
             }
            }
 
