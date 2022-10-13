@@ -9,11 +9,11 @@ namespace andestech.learning2022.krasn
 {
 
     enum LogSeverety { 
-    Info,
-    Warning,
-    Error,
-    Metadata,
-    Debug
+    Info=1,     //    0b1
+    Warning=2,  //   0b10
+    Error=4,    //  0b100
+    Metadata=8, // 0b1000
+    Debug=16    //0b10000
     }
 
    // WriteLine("Pass");
@@ -114,6 +114,10 @@ namespace andestech.learning2022.krasn
                     WriteLine($"Log Error! {message}");
                     //.....
                     break;
+                case LogSeverety.Error | LogSeverety.Metadata:
+                    WriteLine($"Log Error with metadata! {message}");
+                    //.....
+                    break;
                 case LogSeverety.Warning:
                     WriteLine($"Log Warning {message}");
                     //.....
@@ -126,23 +130,16 @@ namespace andestech.learning2022.krasn
                     WriteLine("SOME OPERATIONS...");
                     break;
 
-
-
-
-
-
-
             }
         
         
         }
 
         static void LoggerTest() {
-
             WriteLog("start prog", LogSeverety.Info);
             WriteLog("Error", LogSeverety.Error);
-
-
+            WriteLog("Error", LogSeverety.Error | LogSeverety.Metadata);
+            WriteLog("Info", (LogSeverety)1);
         }
 
         static void Main(string[] args)
