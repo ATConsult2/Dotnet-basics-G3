@@ -231,8 +231,10 @@ namespace andestech.learning2022.krasn
             //NumberTest();
             //LoggerTest();
             LoopTest();
-            WriteLine("======= MULTIC ========");
+            WriteLine("======= MULTIC 12x12 ========");
             Multic(12,12);
+           // WriteLine("======= MULTIC 10x10 ========");
+           // Multic();
 
             Write("press any key..");
             ReadKey();
