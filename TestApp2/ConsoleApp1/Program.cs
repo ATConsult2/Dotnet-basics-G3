@@ -33,13 +33,47 @@ namespace andestech.learning2022.krasn
         
         }
 
+        static void Calculator()
+        {
+            WriteLine("Calculator program. Press \"x\" to exit. Enjoy!");
+
+            while (true)
+            {
+                Write("Enter number1: ");
+                string sa = ReadLine();
+
+                Write("Enter number2: ");
+                string sb = ReadLine();
+
+                if (sa == "x" || sb == "x")
+                { WriteLine("Bye.."); break; }
+
+                int summa=0, a = 0, b=0;
+
+                if (!int.TryParse(sa, out a) || !int.TryParse(sb, out b))
+                {
+                    WriteLine("Wrong format.. Input ignored.");
+                }
+                else
+                {
+                    checked
+                    {
+                        summa = a + b;
+                    }
+                }
+                Console.WriteLine($"{a} + {b} = {summa}");
+            }
+
+        }
+
         static void Main(string[] args)
         {
             
             Write("Pass\n");
             Write("Pass\tPass\tPass\t\n");
 
-            TestInput();
+            //TestInput();
+            Calculator();
 
             Write("press any key..");
             ReadKey();
