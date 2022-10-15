@@ -196,7 +196,8 @@ namespace andestech.learning2022.krasn
 
         }
 
-        static void Multic(int N = 10, int M = 10) {
+        static void Multic(int N = 10, int M = 10) 
+        {
 
             for (int j = 1; j <= N; j++) 
             { 
@@ -212,7 +213,7 @@ namespace andestech.learning2022.krasn
                 }
             WriteLine();
             }
-           }
+        }
 
 
         //   1    2   3   4
