@@ -9,6 +9,26 @@ namespace andestech.learning2022.krasn
 {
     class Program
     {
+        static long Summa(params int[] numbers)
+        {
+            long sum = 0;
+            checked
+            {
+                foreach (int number in numbers) sum += number;
+            }
+            return sum;  
+        }
+
+        static long Summa(params byte[] numbers)
+        {
+            long sum = 0;
+            checked
+            {
+                foreach (byte number in numbers) sum += number;
+            }
+            return sum;
+        }
+
         static void Add100(ref int a) {
             a += 100;
         }
@@ -83,6 +103,11 @@ namespace andestech.learning2022.krasn
             // 2 fill array by random numbers
             rand.NextBytes(arr1);
             PrintArray(arr1);
+
+            // VARARGS test
+
+            WriteLine(Summa(1,2,3,4,5,6,7,8,9));
+            WriteLine(Summa(new byte[] {1,2,3,4,5}));
 
 
             //WriteLine(arr2.ToString());
