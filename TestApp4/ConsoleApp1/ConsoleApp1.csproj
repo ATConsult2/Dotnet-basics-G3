@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9307E83B-C61E-4136-8645-9D97D8EF429A}</ProjectGuid>
+    <ProjectGuid>{E4A86947-E861-45DB-897E-997E73E82597}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ClassTest</RootNamespace>
-    <AssemblyName>ClassTest</AssemblyName>
+    <RootNamespace>ConsoleApp1</RootNamespace>
+    <AssemblyName>ConsoleApp1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,13 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boat5.cs" />
-    <Compile Include="Boat4.cs" />
-    <Compile Include="Boat3.cs" />
-    <Compile Include="Boat2.cs" />
-    <Compile Include="Boat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pinta.cs" />
+    <Compile Include="Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
