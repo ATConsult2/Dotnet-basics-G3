@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+using andestech.learning2022.krasn.
 
 namespace andestech.learning2022.krasn
 {
@@ -17,6 +18,8 @@ namespace andestech.learning2022.krasn
             Pinta p4 = Pinta.getBeer(3);
             WriteLine(p4?.I);
         }
+
+    
 
         static void GameStage1122(IGame sprite)
     //  static void GameStage1122(Sprite sprite)
