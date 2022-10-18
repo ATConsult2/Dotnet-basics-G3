@@ -15,15 +15,12 @@ namespace andestech.learning2022.krasn
             Pinta p3 = Pinta.getBeer(2);
             Pinta p33 = Pinta.getBeer(2);
             Pinta p4 = Pinta.getBeer(3);
+            WriteLine(p4?.I);
         }
 
         static void Main(string[] args)
         {
-            Pinta p1 = Pinta.getBeer();
-            Pinta p2 = Pinta.getBeer(1);
-            Pinta p3 = Pinta.getBeer(2);
-            Pinta p33 = Pinta.getBeer(2);
-            Pinta p4 = Pinta.getBeer(3);
+            PintaTest();
 
         }
     }
