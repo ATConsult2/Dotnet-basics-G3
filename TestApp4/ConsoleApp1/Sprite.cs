@@ -16,16 +16,36 @@ namespace andestech.learning2022.krasn
 //......
     }
 
-    internal class Sprite
+    internal abstract class Sprite : IGame
     {
-      public Point2D Coordinate { get; private set; }
+      public Point2D Coordinates { get; private set; }
+        /*public virtual void Render() {
+              WriteLine("Rendre sprite " + GetHashCode());
+          }*/
+
+      public abstract void Render();
       public int Angle { get; private set; } 
       public Color Color { get; private set; }  
 
       //..... some props...
       //.....
-      public Sprite()
-      
+      public Sprite(Point2D coords, int angle, Color color )
+        {
+            Color = color;
+            Angle = angle;
+            Coordinates = coords;
+        }
+
+        public virtual Sprite MoveX(int dx) { Coordinates.X += dx; return this; }
+        public virtual Sprite MoveY(int dy) { Coordinates.Y += dy; return this; }
+        public virtual Sprite Rotate(int da) { Angle += da; return this; }
+
+        public override string ToString()
+        {
+            return $"Sprite: x={Coordinates.X}, y={Coordinates.Y}," +
+                   $" alha={Angle}, color={Color}.";
+        }
+
 
     }
 }
