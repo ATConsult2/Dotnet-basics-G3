@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+using System.Threading;
 
 
 namespace andestech.learning2022.krasn
@@ -34,6 +35,7 @@ namespace andestech.learning2022.krasn
         }
         static void Main(string[] args)
         {
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");    
             #region  Test Box & Generics
 
             Box b1 = new Box(20);
@@ -81,12 +83,119 @@ namespace andestech.learning2022.krasn
             WriteLine("-------------- Test Collections ----------");
             ArrayList alist = new ArrayList(4)
             {
-            1,2-20,44,440,3
+            1,2-20,44,440,3,"RRR", b2
             };
-            Print(alist);
+           // Print(alist);
+            ArrayList alist2 = new ArrayList(4)
+            {1,2,-20,44,440,3 };
+            Print(alist2);
+            alist2.Add(7);
+            alist2.Insert(2, 2001);
+            Print(alist2);
+            WriteLine(alist2.Capacity + " ---- " + alist2.Count);
+            alist2.Add(-33);
+            alist2[0] = -1;
+            Print(alist2);
+            WriteLine(alist2.Capacity + " ---- " + alist2.Count);
+            alist2.InsertRange(5, new ArrayList()
+            {
+              41,42,43,44,45,46,47,48
+            });
+            Print(alist2);
+            WriteLine(alist2.Capacity + " ---- " + alist2.Count);
+            // sorting ---------
+            alist2.Sort(new MySort());
+            Print(alist2);
+            // -------- LINQ --------------
+            var result =
+                (from int d in alist2
+               // where d >0
+                orderby d descending
+                select d).ToList();
 
+            result.Sort((x, y) => x - y);
+            Print(result);
 
+            List<Box> boxes = new List<Box>() {
+            new Box(10),
+             new Box(1),
+              new Box(100),
+               new Box(7),
+            };
+            WriteLine("----------- LIST test ----------------");
+            Print(boxes);
+            boxes.Sort();
+            var boxes2 =  boxes.Where(a => a.Capacity < 100).ToList();
+            //boxes.Sort((a,b) => (int)(a.Capacity - b.Capacity));
+            Print(boxes);
+            Print(boxes2);
+            Print(new TestEnumerator());
+            foreach (double a in new TestEnumerator()) Write(a + ", ");
             #endregion
+
+            WriteLine("\n----------- STACK & QUEUE test ----------------");
+
+            Stack<int> stack = new Stack<int>();
+            stack.Push(10);
+            stack.Push(20);
+            stack.Push(30);
+            Print(stack);
+            var a2 = stack.Pop();
+            Print(stack);
+            WriteLine("-------------------------");
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(10);
+            queue.Enqueue(20);
+            queue.Enqueue(30);
+            
+            Print(queue);
+            a2 = queue.Dequeue();
+            Print(queue);
+            //---------------------------------------
+            WriteLine("\n----------- Dictionary test ----------------");
+            Dictionary<string, Box> dict =
+                new Dictionary<string, Box>()
+                {
+                    { "one", new Box(1)},
+                    { "hundred", new Box(100)},
+                    { "five", new Box(5)},
+                    { "seven", new Box(7)},
+                };
+            foreach (string key in dict.Keys) Write($"{key} --> {dict[key]}, ");
+            WriteLine();
+            dict.Add("ones", new Box(11));
+            foreach (string key in dict.Keys) Write($"{key} --> {dict[key]}, ");
+            WriteLine();
+            var dict2 = dict.OrderBy(p => p.Key).ToDictionary(p => p.Key);
+            foreach (string key in dict2.Keys) Write($"{key} --> {dict2[key]}, ");
+            WriteLine();
+        }
+    }
+
+    public class TestEnumerator : IEnumerable<double>
+    {
+        public IEnumerator<double> GetEnumerator()
+        {
+            yield return 1.222;
+            yield return -1.2;
+            yield return 66.222;
+            yield return 55.2;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            yield return 10.222;
+            yield return -100.2;
+            yield return 66.222;
+            yield return 55.2;
+        }
+    }
+
+    public class MySort : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            return Math.Abs((int)x) - Math.Abs((int)y);
         }
     }
 }

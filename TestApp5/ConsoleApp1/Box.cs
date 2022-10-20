@@ -8,7 +8,7 @@ using static System.Console;
 
 namespace andestech.learning2022.krasn
 {
-    internal class Box
+    internal class Box : IComparable<Box>
     {
         public uint Capacity { private set; get; }
         public Box(uint capacity)
@@ -46,7 +46,8 @@ namespace andestech.learning2022.krasn
 
         public override string ToString()
         {
-            return $"Box: {Capacity}, id: {GetHashCode()}.";
+            // return $"Box: {Capacity}, id: {GetHashCode()}.";
+            return $"Box: {Capacity}.";
         }
 
         public override bool Equals(object obj)
@@ -54,7 +55,9 @@ namespace andestech.learning2022.krasn
             return Capacity == ((Box)obj).Capacity;
         }
 
-
-
+        public int CompareTo(Box other)
+        {
+            return (int)(Capacity - other.Capacity);
+        }
     }
 }
