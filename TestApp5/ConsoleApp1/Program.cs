@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,16 @@ namespace andestech.learning2022.krasn
          return sum;
         }
 
+        static void Print(IEnumerable coll)
+        {
+            Write("{");
+            foreach (var a in coll) Write(a + ", ");
+            Write("\b\b}\n");
+        }
         static void Main(string[] args)
         {
-            
+            #region  Test Box & Generics
+
             Box b1 = new Box(20);
             Box b2 = new Box(20);
             Box b3 = b1 + b2;
@@ -58,7 +66,27 @@ namespace andestech.learning2022.krasn
             WriteLine(Sum(new byte[] {1,2,3 }));
             WriteLine(Sum(new float[] { 1.2f, 2.3f, 3f }));
             WriteLine(Sum(new byte[] { }));
-            WriteLine(Sum("A","B"));
+           // WriteLine(Sum("A","B")); Type mismatch!!
+            // Basket --> BasketG<T>  !!
+            BasketG<Box> basket2 = new BasketG<Box>(
+                new Box[] { b1, b2, b3 }
+                );
+            BasketG<string> basket3 = new BasketG<string>(
+                new string[] { "AA","BB" }
+                );
+
+            #endregion
+
+            #region Test Collections
+            WriteLine("-------------- Test Collections ----------");
+            ArrayList alist = new ArrayList(4)
+            {
+            1,2-20,44,440,3
+            };
+            Print(alist);
+
+
+            #endregion
         }
     }
 }

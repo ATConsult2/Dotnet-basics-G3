@@ -10,7 +10,7 @@ namespace andestech.learning2022.krasn
 {
     class Container<T> {
      public T Parcell { get; set; }
-        public void f() {  }
+       
     }
 
     internal class Basket

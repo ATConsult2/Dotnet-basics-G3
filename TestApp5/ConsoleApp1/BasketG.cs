@@ -8,27 +8,23 @@ using static System.Console;
 
 namespace andestech.learning2022.krasn
 {
-    class Container<T> {
-     public T Parcell { get; set; }
-        public void f() {  }
-    }
 
-    internal class Basket
+    internal class BasketG<T> // Generic from Basket type
     {
-        private Box[] Boxes { get; }
+        private T[] Boxes { get; }
 
-        public Basket(int size)
+        public BasketG(int size)
         { 
-         Boxes = new Box[size]; 
+         Boxes = new T[size]; 
         }
 
-        public Box this[int i]
+        public T this[int i]
         {
             get { return Boxes[i]; }
             set { Boxes[i] = value; }
         }
 
-        public Box this[string s]
+        public T this[string s]
         {
             get
             {
@@ -44,7 +40,7 @@ namespace andestech.learning2022.krasn
            
         }
 
-        public Basket(Box[] boxes)
+        public BasketG(T[] boxes)
         {
             Boxes = boxes;
         }   
