@@ -28,7 +28,7 @@ namespace andrestech.learning2022.krasn
         {
             greets(name);
         }
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             SayGreets(SayHello, "Andrei");
             SayGreets2(SayHi, "Peter");
@@ -58,8 +58,7 @@ namespace andrestech.learning2022.krasn
             WriteLine(calculator["*"](2, 18));
             WriteLine($"-------- EventTest ---------");
             Library lib = new Library(new List<Book>());
-            lib.Add(new Book() { Title = "To Stars", Author = "R. Heinlein" });
-        
+               
             NewBookHandler subscr1 = mess => WriteLine("S1: " + mess);
             NewBookHandler subscr2 = mess => WriteLine("S2: " + mess);
             lib.NewBook += subscr1;
@@ -67,6 +66,8 @@ namespace andrestech.learning2022.krasn
 
             lib.Add(new Book() { Title = "Война Миров", Author = "Г. Уэлс" });
 
+            lib.NewBook -= subscr2;
+            lib.Add(new Book() { Title = "To Stars", Author = "R. Heinlein" });
 
         }
     }

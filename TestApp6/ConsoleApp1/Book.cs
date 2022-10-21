@@ -10,8 +10,11 @@ namespace andrestech.learning2022.krasn
 {
     internal class Book
     {
+        private String Id { get; set; } = "AAA-120454-FICTION-00";
         public string Title { get; set; }   
-        public string Author { get; set; }  
+        public string Author { get; set; }
+
+        public string getId() { return Id; }
 
     }
 }
