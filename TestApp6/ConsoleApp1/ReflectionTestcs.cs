@@ -14,7 +14,7 @@ namespace andrestech.learning2022.krasn
 {
     internal class ReflectionTestcs
     {
-        static void Main(string[] args) {
+        static void Main2(string[] args) {
 
             F1();
             F2();
@@ -32,6 +32,12 @@ namespace andrestech.learning2022.krasn
             propId.SetValue(book, "---111---");
             WriteLine(book.getId());
 
+            //---------------
+            Type typeLib = typeof(Library);
+            Attribute attr = typeLib.GetCustomAttribute(
+                typeof(LogLevelAttribute), false);
+            if (attr is LogLevelAttribute lla)
+                WriteLine("Level:" + lla.Level);
         }
 
         [Conditional("DEBUG1")]

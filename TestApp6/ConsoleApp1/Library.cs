@@ -7,6 +7,8 @@ using static System.Console;
 namespace andrestech.learning2022.krasn
 {
     public delegate void NewBookHandler(string message);
+
+    [LogLevel(7)]
     internal class Library
     {
         public event NewBookHandler NewBook;
@@ -16,7 +18,8 @@ namespace andrestech.learning2022.krasn
         {
             Books = books;
         }
-
+        
+       
         public bool Add(Book book)
         {
             Books.Add(book);
