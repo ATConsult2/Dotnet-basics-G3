@@ -56,6 +56,18 @@ namespace andrestech.learning2022.krasn
                 };
             // int -> double
             WriteLine(calculator["*"](2, 18));
+            WriteLine($"-------- EventTest ---------");
+            Library lib = new Library(new List<Book>());
+            lib.Add(new Book() { Title = "To Stars", Author = "R. Heinlein" });
+        
+            NewBookHandler subscr1 = mess => WriteLine("S1: " + mess);
+            NewBookHandler subscr2 = mess => WriteLine("S2: " + mess);
+            lib.NewBook += subscr1;
+            lib.NewBook += subscr2;
+
+            lib.Add(new Book() { Title = "Война Миров", Author = "Г. Уэлс" });
+
+
         }
     }
 }
