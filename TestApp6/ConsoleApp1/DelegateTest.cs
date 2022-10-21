@@ -22,13 +22,27 @@ namespace andrestech.learning2022.krasn
         static void SayGreets(GreetsHandler greets, string name) {
             greets(name);
         }
+
+        static void SayGreets2(Action<string> greets, string name)
+        {
+            greets(name);
+        }
         static void Main(string[] args)
         {
             SayGreets(SayHello, "Andrei");
-            SayGreets(SayHi, "Andrei");
-            SayGreets(SaySalute, "Andrei");
-            WriteLine($"------------------------");
+            SayGreets2(SayHi, "Peter");
+            SayGreets(SaySalute, "Basil");
+            SayGreets2(name => WriteLine("Привет, " + name + "!!"), "Таня");
 
+            WriteLine($"------------------------");
+            Action<string> greets = SayHello;
+            greets += SayHi;
+            greets += SaySalute;
+            greets += name => WriteLine("Как дела, " + name + "!!");
+            SayGreets2(greets,"Andrei");
+            greets -= SayHi;
+            WriteLine($"------------------------");
+            SayGreets2(greets, "Andrei");
         }
     }
 }
