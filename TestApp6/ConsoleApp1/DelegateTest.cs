@@ -10,6 +10,7 @@ namespace andrestech.learning2022.krasn
     public delegate void GreetsHandler(string name); 
     internal class DelegateTest
     {
+        //public delegate void GreetsHandler2(string name);
         static void SayHi(string name) =>  
             WriteLine($"Hi, {name}!! ");
         static void SayHello(string name) =>
@@ -43,6 +44,18 @@ namespace andrestech.learning2022.krasn
             greets -= SayHi;
             WriteLine($"------------------------");
             SayGreets2(greets, "Andrei");
+
+            WriteLine($"-------- Calclus Test ---------");
+            Dictionary<string, Func<int, int, int>> calculator =
+                new Dictionary<string, Func<int, int, int>>()
+                {
+                    {"+", (x,y) => x+y },
+                    {"-", (x,y) => x-y},
+                    {"*", (x,y) => x*y},
+                    {"/", (x,y) => x/y},
+                };
+            // int -> double
+            WriteLine(calculator["*"](2, 18));
         }
     }
 }
